@@ -2,9 +2,21 @@
 #define ANIMATION_BUILDER_H
 
 #include "Asset.hpp"
-#include "Animation.hpp"
 #include <SDL2/SDL.h>
 #include <vector>
+
+struct AnimationProps
+{
+    int row;
+    int frames;
+    int frameWidth;
+    int frameHeight;
+    // frameDuration is the time in seconds, 
+    // ex: 1 = one second per frame 
+    // ex: 0.1 = 100ms per frame
+    double frameDuration; 
+    bool repeat;
+};
 
 class AnimationBuilder
 {

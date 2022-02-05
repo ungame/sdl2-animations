@@ -2,30 +2,18 @@
 #define ANIMATION_H
 
 #include "Asset.hpp"
+#include "AnimationBuilder.hpp"
 
 #include <SDL2/SDL.h>
 #include <string>
 #include <chrono>
 #include <vector>
 
-struct AnimationProps
-{
-    int row;
-    int frames;
-    int frameWidth;
-    int frameHeight;
-    // frameDuration is the time in seconds, 
-    // ex: 1 = one second per frame 
-    // ex: 0.1 = 100ms per frame
-    double frameDuration; 
-    bool repeat;
-};
-
 class Animation
 {
     public:
         Animation(Asset* asset, AnimationProps* props, std::string name, int scale = 1);
-        Animation(Asset* asset, AnimationProps* props, std::vector<SDL_Rect> frames, std::string name, int scale = 1);
+        Animation(Asset* asset, AnimationBuilder* builder, std::string name, int scale = 1);
         void animate(SDL_Renderer* renderer, int x, int y, SDL_RendererFlip flip = SDL_FLIP_NONE);
         void reset(); 
         inline bool wasAnimated() { return _animated; }

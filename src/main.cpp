@@ -1,12 +1,10 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+#include "Window.hpp"
 #include "Input.hpp"
 #include "Asset.hpp"
 #include "Sprite.hpp"
-
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 600
 
 int main(int argc, char* argv[])
 {
@@ -40,7 +38,7 @@ int main(int argc, char* argv[])
     }
 
     Asset* asset = new Asset(renderer, "assets/Sprites/PrototypeHero.png");
-    Sprite* hero = new Sprite(asset, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+    Sprite* hero = new Sprite(asset, WINDOW_WIDTH / 2, WINDOW_HEIGHT - 10);
 
     while(Input::Instance()->Listen())
     {

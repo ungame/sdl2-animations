@@ -1,5 +1,6 @@
-#include "Animation.hpp"
 #include "Asset.hpp"
+#include "AnimationBuilder.hpp"
+#include "Animation.hpp"
 
 #include <SDL2/SDL.h>
 #include <string>
@@ -30,15 +31,15 @@ void Animation::build()
     }
 }
 
-Animation::Animation(Asset* asset, AnimationProps* props, std::vector<SDL_Rect> frames, std::string name, int scale)
+Animation::Animation(Asset* asset, AnimationBuilder* builder, std::string name, int scale)
 {
     _asset = asset;
-    _props = props;
+    _props = builder->getProps();
     _name = name;
     _scale = scale;
     _frame = 0;
     _started = false;
-    _frames = frames;
+    _frames = builder->getFrames();
 }
 
 void Animation::animate(SDL_Renderer* renderer, int x, int y, SDL_RendererFlip flip)
